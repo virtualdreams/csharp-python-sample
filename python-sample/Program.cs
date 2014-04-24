@@ -63,14 +63,16 @@ namespace python_sample
 			var vn = _scope.GetVariableNames();
 			
 			//get variables from scope if needed
-			//var v1 = _scope.GetVariable("mul");
+			var v1 = _scope.GetVariable("mul");
 			var v2 = _scope.GetVariable("Example");
-			//var v3 = _scope.GetVariable("var");
+			var v3 = _scope.GetVariable("var");
 
 			//useful stuff
 			//var a1 = _engine.Operations.GetCallSignatures(v3);
 			//var a2 = _engine.Operations.GetMemberNames(v3);
-			//var a3 = _engine.Operations.IsCallable(v3);
+			var a1 = _engine.Operations.IsCallable(v1);
+			var a2 = _engine.Operations.IsCallable(v2);
+			var a3 = _engine.Operations.IsCallable(v3);
 
 			//create instance from variable
 			var i = _engine.Operations.CreateInstance(v2);
@@ -86,6 +88,11 @@ namespace python_sample
 			Func<User, User> Multiply;
 			Multiply = _engine.Operations.GetMember<Func<User, User>>(i, "Multiply");
 			User r3 = Multiply(user);
+
+			Func<User, User> Mul;
+			Mul = _scope.GetVariable<Func<User, User>>("mul");
+			User r4 = Mul(r3);
+
 		}
 
 		//member function to export
