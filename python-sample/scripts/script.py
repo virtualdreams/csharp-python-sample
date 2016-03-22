@@ -1,6 +1,9 @@
 ﻿# core.py
 from core import *
 
+# time
+import time
+
 # import from assembly
 from python_sample import User
 
@@ -10,6 +13,13 @@ def mul(x):
 
 # variable
 var = "c"
+
+m = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+
+t = '12.10.2015'
+t = time.strptime(t, '%d.%m.%Y')
+
+var = '{h}. {m} {y}'.format(h = t.tm_mday, m = m[t.tm_mon - 1], y = t.tm_year)
 
 # class
 class Example(Base):
